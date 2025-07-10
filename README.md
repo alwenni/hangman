@@ -1,6 +1,6 @@
 # 🚀 HANGMAN
 
-![some alt text](file:///Users/ice/Downloads/ChatGPT%20Image%2010%20%D9%8A%D9%88%D9%84%D9%8A%D9%88%202025%D8%8C%2001_34_03%20%D8%B5.png)
+![SOME](https://i.imgur.com/qcTaxty.png)
 
 
 Welcome to **Hangman**!  
