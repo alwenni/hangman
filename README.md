@@ -1,4 +1,6 @@
-# 🚀 Getting Started
+# 🚀 HANGMAN
+
+[some alt text]([some alt text](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1u2p917cvlyP6SuHcq3t0Q.jpeg))
 
 Welcome to **Hangman**!  
 Challenge yourself and see how many words you can guess before the character’s fate is sealed.
