@@ -24,9 +24,9 @@ Challenge yourself and see how many words you can guess before the character’s
 
 ## 💡 Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
+- HTML
+- CSS
+- JavaScript 
 
 ---
 
