@@ -1,0 +1,138 @@
+
+
+body{
+    
+background-color:#C18F61;
+    font-family: 'Irish Grover', cursive;
+    color: #4D3118;
+      display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+    
+    
+   
+    
+} 
+
+
+header {
+     font-family: 'Kablammo', cursive;
+    font-size: 70px;
+    color: #4D3118;
+    text-align: top center;
+    
+    margin-bottom: 20px;
+}
+
+
+#the_menu {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    padding: 10px 20px;
+    background-color: #4D3118;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#the_reset {
+    position: absolute;
+    top: 500px;
+    right: 30px;
+    padding: 10px 20px;
+    background-color: #4D3118;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.damage_img {
+    border: 5px solid black;
+    position: relative;
+    left: -600px;
+    top: -640px;
+    width: 190px;
+    height: auto;
+    
+    transition: transform 0.5s ease-in-out;
+}
+#dam0 {
+    display: block;
+}
+#dam1 {
+    display: none;
+}
+#dam2 {
+    display: none;
+}
+#dam3 {
+    display: none;
+}
+#dam4 {
+    display: none;
+}
+#dam5 {
+    display: none;
+}
+#dam6 { 
+    display: none;
+}
+#dam7 {
+    display: none;
+}
+
+
+.Shanging {
+    z-index: 1;
+    position: relative;
+    left: -650px;
+    bottom: -150px;
+    width: 300px;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+
+}
+
+
+
+#img0 {
+    display: block;
+}
+
+#img1 {
+    display: none;
+}
+#img2 { 
+    display: none;
+}
+#img3 {
+    display: none;
+}
+#img4 {
+    display: none;
+}
+#img5 {
+    display: none;
+}
+#img6 {
+    display: none;
+}
+#img7 {
+    display: none;
+}
+header{
+    text-align: center;
+    margin-bottom: -130px;
+    font-family: 'Kablammo', cursive;
+    font-size: 70px;
+    color: #4D3118;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+

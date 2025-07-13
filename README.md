@@ -5,7 +5,7 @@ Challenge yourself and see how many words you can guess before the character’s
 
 - **Play Now:** [Launch the Game](your-link-here)
 - **Planning Materials:**
-    - Game Screens (Wireframes)
+    - Game Screens (figma)
     - Menu System
     - Contact & Help Pages
     - Damage Meter & Visual Feedback (Luffy gets sad!)
@@ -44,4 +44,3 @@ Challenge yourself and see how many words you can guess before the character’s
 - Improve mobile responsiveness.
 - Introduce custom word categories and difficulty levels.
 
----
