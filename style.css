@@ -136,7 +136,17 @@ header{
 }
 
 
-
+#letterInput {
+    width: 150px;
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 5px;
+    border: 2px solid #4D3118;
+    background-color: #ffffff;
+    
+}
 
 
 
