@@ -1,3 +1,18 @@
+document.addEventListener("keydown", handleKeyPress);
+
+span.classList.add("letter-box");
+if (letter === " ") {
+  span.classList.add("letter-space");
+}
+
+
+let chosenWord = "";      
+let correctLetters = [];    
+let wrongLetters = [];   
+let maxErrors = 7;     
+
+
+
 const easyWords = ['apple', 'car', 'book', 'cat', 'dog', 'sun', 'star', 'red', 'blue', 'green', 'run', 'box', 'fish', 'hat', 'bed', 'pen', 'ball', 'bag', 'tree', 'chair',
 'cup', 'desk', 'rain', 'milk', 'door', 'bird', 'hand', 'foot', 'shoe', 'smile', 'jump', 'snow', 'moon', 'sky', 'nose', 'face', 'cake', 'gold', 'king', 'queen',
 'fire', 'grass', 'cow', 'sheep', 'goat', 'ant', 'bee', 'map', 'bell', 'wall', 'home', 'sand', 'rock', 'boat', 'rice', 'kite', 'doll', 'frog', 'book', 'fan',
@@ -81,6 +96,51 @@ function getRandomWord_insane() {
 
 }
 
+
+
+function guess(letter) {
+
+  if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
+    return; 
+  }
+
+  if (chosenWord.toLowerCase().includes(letter)) {
+    correctLetters.push(letter);
+    updateWordDisplay();
+    updateCorrectLetters();
+    checkWin();          
+  } else {
+    
+    wrongLetters.push(letter);
+    updateWrongGuesses();
+    updateHangman();
+    checkLose();
+  }
+}
+
+
+function handleKeyboard(event){
+const letter = event.key.toLowerCase();
+  if (letter.length === 1 && letter.match(/[a-z]/i)) {
+    guess(letter);
+  }
+
+}
+
+
+function updateCorrectLetters(){
+    document.getElementById("correctLetters").textContent = correctLetters.join(", ");
+}
+
+function updateWrongLetters(){
+    document.getElementById("wrongLetters").textContent = wrongLetters.join(", ");
+}
+
+
+
+
+
+ 
 
 
 
