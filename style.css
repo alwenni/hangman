@@ -1,31 +1,22 @@
-
-
-body{
-    
-background-color:#C18F61;
+body {
+    background-color: #C18F61;
     font-family: 'Irish Grover', cursive;
     color: #4D3118;
-      display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
+    position: relative;
     height: 800px;
-    
-    
-   
-    
 } 
 
-
 header {
-     font-family: 'Kablammo', cursive;
+    font-family: 'Kablammo', cursive;
     font-size: 70px;
     color: #4D3118;
-    text-align: top center;
-    
-    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 #the_menu {
     position: absolute;
@@ -38,6 +29,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+
 #the_reset {
     position: absolute;
     top: 500px;
@@ -53,13 +45,13 @@ header {
 
 .damage_img {
     border: 5px solid black;
-    position: relative;
-    left: -900px;
-    top: -640px;
-    width: 290px;
+    position: absolute;
+    left: 40px;
+    top: 150px;
+    width: 180px;
     height: auto;
-    
 }
+
 #dam0 {
     display: block;
 }
@@ -85,24 +77,19 @@ header {
     display: none;
 }
 
-
 .Shanging {
-    z-index: 1;
-    position: relative;
-    left: -400px;
-    bottom: 250px;
-    width: 100px;
+    position: absolute;
+    left: 40px;
+    top: 150px;
+    width: 200px;
     height: auto;
     transition: transform 0.5s ease-in-out;
-
+    z-index: 1;
 }
-
-
 
 #img0 {
-    display: flex;
+    display: block;
 }
-
 #img1 {
     display: none;
 }
@@ -124,36 +111,36 @@ header {
 #img7 {
     display: none;
 }
-header{
-    text-align: center;
-    margin-bottom: -130px;
-    font-family: 'Kablammo', cursive;
-    font-size: 70px;
-    color: #4D3118;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-}
-
 
 #letterInput {
     width: 150px;
     height: 40px;
     font-size: 40px;
     text-align: center;
-    margin: 5px;
     border-radius: 5px;
     border: 2px solid #4D3118;
     background-color: #ffffff;
-    margin-top: 100px;
-    
+    position: absolute;
+    top: 700px;
+    right: 500px;
 }
 
 #the_submit {
-    margin-top: 300px;
+    position: absolute;
+    top: 700px;
+    right: 300px;
 }
+
 #the_submit.button {
     border-radius: 5px;
     border: 2px solid #4D3118;
     background-color: #ffffff;
-    margin-top: 100px;
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
