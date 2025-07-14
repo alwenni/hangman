@@ -54,12 +54,11 @@ header {
 .damage_img {
     border: 5px solid black;
     position: relative;
-    left: -600px;
+    left: -900px;
     top: -640px;
-    width: 190px;
+    width: 290px;
     height: auto;
     
-    transition: transform 0.5s ease-in-out;
 }
 #dam0 {
     display: block;
@@ -90,9 +89,9 @@ header {
 .Shanging {
     z-index: 1;
     position: relative;
-    left: -650px;
-    bottom: -150px;
-    width: 300px;
+    left: -400px;
+    bottom: 250px;
+    width: 100px;
     height: auto;
     transition: transform 0.5s ease-in-out;
 
@@ -101,7 +100,7 @@ header {
 
 
 #img0 {
-    display: block;
+    display: flex;
 }
 
 #img1 {
@@ -145,13 +144,16 @@ header{
     border-radius: 5px;
     border: 2px solid #4D3118;
     background-color: #ffffff;
+    margin-top: 100px;
     
 }
 
-
-
-
-
-
-
-
+#the_submit {
+    margin-top: 300px;
+}
+#the_submit.button {
+    border-radius: 5px;
+    border: 2px solid #4D3118;
+    background-color: #ffffff;
+    margin-top: 100px;
+}
