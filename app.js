@@ -6,7 +6,7 @@ if (letter === " ") {
 }
 
 
-let chosenWord = "";      
+let chosenWord = "example";      
 let correctLetters = [];    
 let wrongLetters = [];   
 let maxErrors = 7;     
@@ -113,8 +113,10 @@ function guess(letter) {
     
     wrongLetters.push(letter);
     updateWrongLetters(letter);
+    update_Hang_Picture();
+    update_damage_picture();
     updateWordDisplay();
-    update_Hang_Picture(letter);
+
     checkLose();
   }
 }
@@ -129,13 +131,6 @@ const letter = event.key.toLowerCase();
 }
 
 
-function updateCorrectLetters(){
-    document.getElementById("correctLetters").textContent = correctLetters.join(", ");
-}
-
-function updateWrongLetters(){
-    document.getElementById("wrongLetters").textContent = wrongLetters.join(", ");
-}
 
 function resetGame(){
 correctLetters=[];
@@ -210,6 +205,45 @@ function update_damage_picture(){
 
 }
 
+
+
+function update_Correct_Letter(){
+const display=document.getElementById("correctLetters");
+for (let i = 0; i < chosenWord.length; i++) {
+    const letter = chosenWord[i].toLowerCase();
+    if (correctLetters.includes(letter)) {
+      html += `<span class="letter">${letter}</span>`;
+    } else {
+      html += `<span class="letter">_</span>`;
+    }
+  }
+
+  display.innerHTML = html;
+}
+
+
+
+function updateWrongLetters() {
+  const display = document.getElementById("wrongLetters");
+  display.innerHTML = `
+    <h2>Wrong Letter</h2>
+    <p>${wrongLetters.join(", ")}</p>
+  `;
+}
+
+
+
+const input = document.getElementById("letterInput");
+
+input.addEventListener("input", function () {
+  const letter = input.value.toLowerCase();
+
+  if (/^[a-z]$/.test(letter)) {
+    guess(letter);         
+  }
+
+  input.value = "";       
+});
 
 
 
