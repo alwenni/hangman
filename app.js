@@ -106,14 +106,15 @@ function guess(letter) {
 
   if (chosenWord.toLowerCase().includes(letter)) {
     correctLetters.push(letter);
+    updateCorrectLetters(letter);
     updateWordDisplay();
-    updateCorrectLetters();
     checkWin();          
   } else {
     
     wrongLetters.push(letter);
-    updateWrongGuesses();
-    updateHangman();
+    updateWrongLetters(letter);
+    updateWordDisplay();
+    update_Hang_Picture(letter);
     checkLose();
   }
 }
@@ -134,6 +135,79 @@ function updateCorrectLetters(){
 
 function updateWrongLetters(){
     document.getElementById("wrongLetters").textContent = wrongLetters.join(", ");
+}
+
+function resetGame(){
+correctLetters=[];
+wrongLetters=[];
+chosenWord=[];
+document.addEventListener("keydown", handleKeyPress);
+
+}
+
+function update_Hang_Picture(){
+for (let i = 0; i <= 7; i++) {
+    const img = document.getElementById(`img${i}`);
+    if (img) img.style.display = "none";
+  }
+
+
+  const image = document.getElementById("hangmanImage");
+
+  if(wrongLetters.length===0){
+    document.getElementById("img0").style.display="block";
+  }
+
+else if (wrongLetters.length === 1) {
+    document.getElementById("img1").style.display = "block";
+  }
+  else if (wrongLetters.length === 2) {
+    document.getElementById("img2").style.display = "block";
+  } else if (wrongLetters.length === 3) {
+    document.getElementById("img3").style.display = "block";
+  } else if (wrongLetters.length === 4) {
+    document.getElementById("img4").style.display = "block";
+  } else if (wrongLetters.length === 5) {
+    document.getElementById("img5").style.display = "block";
+  } else if (wrongLetters.length === 6) {
+    document.getElementById("img6").style.display = "block";
+  } else if (wrongLetters.length >= 7) {
+    document.getElementById("img7").style.display = "block";
+  }
+
+
+
+
+}
+
+
+
+
+
+function update_damage_picture(){
+    for (let i = 0; i <= 7; i++) {
+    const img = document.getElementById(`dam${i}`);
+    if (img) img.style.display = "none";
+  }
+
+  if (wrongLetters.length === 0) {
+    document.getElementById("dam0").style.display = "block";
+  } else if (wrongLetters.length === 1) {
+    document.getElementById("dam1").style.display = "block";
+  } else if (wrongLetters.length === 2) {
+    document.getElementById("dam2").style.display = "block";
+  } else if (wrongLetters.length === 3) {
+    document.getElementById("dam3").style.display = "block";
+  } else if (wrongLetters.length === 4) {
+    document.getElementById("dam4").style.display = "block";
+  } else if (wrongLetters.length === 5) {
+    document.getElementById("dam5").style.display = "block";
+  } else if (wrongLetters.length === 6) {
+    document.getElementById("dam6").style.display = "block";
+  } else if (wrongLetters.length >= 7) {
+    document.getElementById("dam7").style.display = "block";
+  }
+
 }
 
 
