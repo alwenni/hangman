@@ -1,23 +1,10 @@
-document.addEventListener("keydown", handleKeyPress);
-
-span.classList.add("letter-box");
-if (letter === " ") {
-  span.classList.add("letter-space");
-}
-
-
-let chosenWord = "example";      
-let correctLetters = [];    
-let wrongLetters = [];   
-let maxErrors = 7;     
-
-
-
-const easyWords = ['apple', 'car', 'book', 'cat', 'dog', 'sun', 'star', 'red', 'blue', 'green', 'run', 'box', 'fish', 'hat', 'bed', 'pen', 'ball', 'bag', 'tree', 'chair',
-'cup', 'desk', 'rain', 'milk', 'door', 'bird', 'hand', 'foot', 'shoe', 'smile', 'jump', 'snow', 'moon', 'sky', 'nose', 'face', 'cake', 'gold', 'king', 'queen',
-'fire', 'grass', 'cow', 'sheep', 'goat', 'ant', 'bee', 'map', 'bell', 'wall', 'home', 'sand', 'rock', 'boat', 'rice', 'kite', 'doll', 'frog', 'book', 'fan',
-'sock', 'star', 'fox', 'leaf', 'corn', 'ring', 'cake', 'lamp', 'soap', 'bear', 'coin', 'glass', 'rug', 'wind', 'drum', 'duck', 'doll', 'flag', 'nest', 'egg',
-'mug', 'rope', 'soap', 'fork', 'comb', 'tent', 'bus', 'jam', 'log', 'nail', 'bone', 'key', 'rug', 'seed', 'milk', 'apple', 'cake', 'game', 'plum', 'pot', 'net'];
+const easyWords = [
+  "apple", "car", "book", "cat", "dog", "sun", "star", "red", "blue", "green", "run", "box", "fish", "hat", "bed", "pen", "ball", "bag", "tree", "chair",
+  "cup", "desk", "rain", "milk", "door", "bird", "hand", "foot", "shoe", "smile", "jump", "snow", "moon", "sky", "nose", "face", "cake", "gold", "king", "queen",
+  "fire", "grass", "cow", "sheep", "goat", "ant", "bee", "map", "bell", "wall", "home", "sand", "rock", "boat", "rice", "kite", "doll", "frog", "book", "fan",
+  "sock", "star", "fox", "leaf", "corn", "ring", "cake", "lamp", "soap", "bear", "coin", "glass", "rug", "wind", "drum", "duck", "doll", "flag", "nest", "egg",
+  "mug", "rope", "soap", "fork", "comb", "tent", "bus", "jam", "log", "nail", "bone", "key", "rug", "seed", "milk", "apple", "cake", "game", "plum", "pot", "net"
+];
 
 
 const mediumWords = [
@@ -67,6 +54,19 @@ const InsaneWords = [
 
 
 
+
+console.log("Hello from app.js");
+document.addEventListener("keydown", handleKeyPress);
+
+
+
+let  temp, the_word;
+
+const chosenWord = getRandomWord_easy().the_word;      
+let correctLetters = [];    
+let wrongLetters = [];   
+let maxErrors = 7;     
+
 function getRandomWord_hard() {
     return{
        the_word: hardWords[Math.floor(Math.random() * hardWords.length)],
@@ -98,15 +98,35 @@ function getRandomWord_insane() {
 
 
 
-function guess(letter) {
 
+
+
+
+
+
+
+
+
+
+function handleKeyboard(event) {
+  const letter = event.key.toLowerCase();
+  if (letter.length === 1 && letter.match(/[a-z]/i)) {
+    guess(letter);
+  }
+}
+
+
+
+function guess(letter) {
+console.log("Guessed letter:", letter);
+console.log("Wrong letters:", wrongLetters);
   if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
     return; 
   }
 
   if (chosenWord.toLowerCase().includes(letter)) {
     correctLetters.push(letter);
-    updateCorrectLetters(letter);
+    update_Correct_Letter(letter);
     updateWordDisplay();
     checkWin();          
   } else {
@@ -116,13 +136,14 @@ function guess(letter) {
     update_Hang_Picture();
     update_damage_picture();
     updateWordDisplay();
+    wrongLetters.push(letter);
 
     checkLose();
   }
 }
 
 
-function handleKeyboard(event){
+function handleKeyPress(event){
 const letter = event.key.toLowerCase();
   if (letter.length === 1 && letter.match(/[a-z]/i)) {
     guess(letter);
@@ -209,6 +230,8 @@ function update_damage_picture(){
 
 function update_Correct_Letter(){
 const display=document.getElementById("correctLetters");
+  let html = "<h2>Correct Letter</h2>";
+
 for (let i = 0; i < chosenWord.length; i++) {
     const letter = chosenWord[i].toLowerCase();
     if (correctLetters.includes(letter)) {
@@ -233,24 +256,28 @@ function updateWrongLetters() {
 
 
 
-const input = document.getElementById("letterInput");
 
-input.addEventListener("input", function () {
-  const letter = input.value.toLowerCase();
+
+// داخل app.js أو ملف السكربت بعد تعريف الدوال
+const input = document.getElementById("letterInput");
+const button = document.getElementById("submitLetter");
+
+button.addEventListener("click", function () {
+  const letter = input.value.toLowerCase().trim();  // تأكد من إزالة الفراغات
 
   if (/^[a-z]$/.test(letter)) {
-    guess(letter);         
+    guess(letter); // ✅ الحرف يدخل إلى الدالة هنا
+  } else {
+    alert("Please enter a valid single letter.");
   }
 
-  input.value = "";       
+  input.value = "";
+  input.focus();
 });
 
 
 
-const iPput=document.getElementById("letterInput");
-const butTton=document.getElementById("submitLetter");
 
 
-
-
-
+console.log(44);
+console.log(chosenWord);

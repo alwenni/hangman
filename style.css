@@ -186,4 +186,10 @@ h1 {
     right: 0;
     text-align: center;
 }
+span {
+    position: absolute;
+      padding: 5px;
+      font-weight: bold;
+      
+    }
 
