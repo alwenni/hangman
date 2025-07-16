@@ -247,8 +247,10 @@ input.addEventListener("input", function () {
 
 
 
+const iPput=document.getElementById("letterInput");
+const butTton=document.getElementById("submitLetter");
 
- 
+
 
 
 
