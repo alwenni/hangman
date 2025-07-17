@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hangman - Start</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kablammo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #C18F61;
+      font-family: 'Irish Grover', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-family: 'Kablammo', cursive;
+      font-size: 130px;
+      color: #3a1d00;
+      margin-bottom: 40px;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0 40px;
+      margin-bottom: 40px;
+    }
+
+    .stickman {
+      max-height: 350px;
+    }
+
+    .play-button {
+      background-color: #3a1d00;
+      color: #c48958;
+      font-size: 40px;
+      padding: 20px 70px;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      font-family: 'Irish Grover', cursive;
+      transition: background-color 0.3s ease;
+      margin-top: 30px;
+    }
+
+    .play-button:hover {
+      background-color: #5a2d00;
+    }
+
+    .difficulty-box {
+      background-color: #3a1d00;
+      color: #fff;
+      padding: 25px 35px;
+      border-radius: 20px;
+      margin-top: 20px;
+      font-size: 28px;
+    }
+
+    .difficulty-box label {
+      margin-right: 30px;
+      cursor: pointer;
+    }
+
+    .difficulty-box input[type="radio"] {
+      margin-right: 8px;
+      transform: scale(1.6);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HANGMAN</h1>
+
+  
+  <div class="image-row">
+    <img src="file:///Users/ice/Desktop/Screenshot%202025-07-17%20at%207.22.07%E2%80%AFAM.png" alt="Hangman Left" class="stickman" />
+    <img src="file:///Users/ice/Desktop/Screenshot%202025-07-17%20at%207.22.07%E2%80%AFAM.png" alt="Hangman Right" class="stickman" />
+  </div>
+
+  <div class="difficulty-box">
+    <label><input type="radio" name="difficulty" value="easy" checked> Easy</label>
+    <label><input type="radio" name="difficulty" value="medium"> Medium</label>
+    <label><input type="radio" name="difficulty" value="hard"> Hard</label>
+    <label><input type="radio" name="difficulty" value="insane"> Insane</label>
+  </div>
+
+  <button class="play-button" onclick="startGame()">Play</button>
+
+  <script>
+    function startGame() {
+      const level = document.querySelector('input[name="difficulty"]:checked').value;
+      window.location.href = `index.html?level=${level}`;
+
+    }
+  </script>
+
+</body>
+</html>

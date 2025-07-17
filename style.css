@@ -85,6 +85,8 @@ header {
     height: auto;
     transition: transform 0.5s ease-in-out;
     z-index: 1;
+     clip-path: inset(0 10px 0 0); /* top right bottom left */
+
 }
 
 #img0{
@@ -229,8 +231,10 @@ bottom: 300px;
 #correctLetters p{
 position: absolute;  
   color: #09ff00;
-  right: 70px;
-    top: 37px
+  right: 250px;
+    top: 37px;
+
+
 }
 
 
@@ -256,7 +260,7 @@ margin-right: 50px;
 #wrongLetters p{
     color: #d90e0e;
     position: absolute;
-    right: 70px;
+    right: -35px;
     top: 37px
 }
 

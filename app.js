@@ -1,3 +1,6 @@
+const ouchSound = new Audio("/Users/ice/Downloads/ouch.mp3");
+
+
 const easyWords = [
   "apple", "car", "book", "cat", "dog", "sun", "star", "red", "blue", "green", "run", "box", "fish", "hat", "bed", "pen", "ball", "bag", "tree", "chair",
   "cup", "desk", "rain", "milk", "door", "bird", "hand", "foot", "shoe", "smile", "jump", "snow", "moon", "sky", "nose", "face", "cake", "gold", "king", "queen",
@@ -56,7 +59,24 @@ const InsaneWords = [
 
 
 console.log("Hello from app.js");
-document.addEventListener("keydown", handleKeyPress);
+
+
+
+const inputa = document.getElementById("letterInput");
+
+inputa.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    const letter = inputa.value.toLowerCase().trim();
+    if (/^[a-z]$/.test(letter)) {
+      guess(letter);
+    } else {
+      alert("Please enter a valid single letter.");
+    }
+    inputa.value = "";
+    inputa.focus();    
+  }
+});
+
 
 
 
@@ -129,6 +149,12 @@ console.log("Wrong letters:", wrongLetters);
     update_Correct_Letter(letter);
     checkWin();          
   } else {
+    ouchSound.currentTime=0;
+    ouchSound.play();
+    setTimeout(() => {
+  ouchSound.pause();
+  ouchSound.currentTime = 0; 
+}, 2000);
     
     wrongLetters.push(letter);
     updateWrongLetters(letter);
@@ -330,11 +356,15 @@ function resetGame() {
   correctLetters = [];
   wrongLetters = [];
   chosenWord = getRandomWord_easy().the_word.toLowerCase(); 
+  console.log(chosenWord);
+
+  document.getElementById("letterInput").value = "";
 
   update_Correct_Letter();
   updateWrongLetters();
   update_Hang_Picture();
   update_damage_picture();
+  
 
   
   for (let i = 1; i <= 7; i++) {
@@ -354,6 +384,15 @@ function resetGame() {
 }
 
 
+const menuBtn = document.getElementById("the_menu");
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
+      console.log("Menu clicked"); 
+      window.location.href = "index1.html";
+    });
+  }
+
+
 
 function checkWin() {
   let won = true;
@@ -368,7 +407,7 @@ function checkWin() {
 
   if (won) {
     setTimeout(() => {
-      alert("🎉 Congratulations! You won!");
+      alert("🎉 you win");
       resetGame();
     }, 100);
   }
@@ -388,3 +427,21 @@ function updateWordDisplay(word, guessedLetters) {
   return display.trim();
 }
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const resetBtn = document.getElementById("the_reset");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", resetGame);
+  }
+
+  update_Correct_Letter(); 
+});
+
+
+
+
+
+
+
+  
+  
