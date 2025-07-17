@@ -39,7 +39,6 @@ Challenge yourself and see how many words you can guess before the character’s
 
 ## 🚧 Next Steps
 
-[The Game](https://hangman36.surge.sh)
 
 - Add sound effects for correct and incorrect guesses.
 - Animate character reactions for more engaging feedback.
@@ -50,5 +49,5 @@ Challenge yourself and see how many words you can guess before the character’s
 
 
 ## End
-**[The Game]**(https://hangman36.surge.sh)
+[The Game](https://hangman36.surge.sh)
 
