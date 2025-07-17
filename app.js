@@ -62,7 +62,7 @@ document.addEventListener("keydown", handleKeyPress);
 
 let  temp, the_word;
 
-const chosenWord = getRandomWord_easy().the_word;      
+let chosenWord = getRandomWord_easy().the_word;      
 let correctLetters = [];    
 let wrongLetters = [];   
 let maxErrors = 7;     
@@ -127,7 +127,6 @@ console.log("Wrong letters:", wrongLetters);
   if (chosenWord.toLowerCase().includes(letter)) {
     correctLetters.push(letter);
     update_Correct_Letter(letter);
-    updateWordDisplay();
     checkWin();          
   } else {
     
@@ -156,8 +155,14 @@ const letter = event.key.toLowerCase();
 function resetGame(){
 correctLetters=[];
 wrongLetters=[];
-chosenWord=[];
+chosenWord=getRandomWord_easy().the_word;
+update_Correct_Letter();
+updateWrongLetters();
+update_Hang_Picture();
+update_damage_picture();
 document.addEventListener("keydown", handleKeyPress);
+re
+
 
 }
 
@@ -228,19 +233,20 @@ function update_damage_picture(){
 
 
 
-function update_Correct_Letter(){
-const display=document.getElementById("correctLetters");
-  let html = "<h2>Correct Letter</h2>";
+function update_Correct_Letter() {
+  const display = document.getElementById("correctLetters");
+  let html = "<h2>Correct Letter</h2><p>";
 
-for (let i = 0; i < chosenWord.length; i++) {
+  for (let i = 0; i < chosenWord.length; i++) {
     const letter = chosenWord[i].toLowerCase();
     if (correctLetters.includes(letter)) {
-      html += `<span class="letter">${letter}</span>`;
+      html += `${letter} `;
     } else {
-      html += `<span class="letter">_</span>`;
+      html += "_ ";
     }
   }
 
+  html += "</p>";
   display.innerHTML = html;
 }
 
@@ -258,15 +264,14 @@ function updateWrongLetters() {
 
 
 
-// داخل app.js أو ملف السكربت بعد تعريف الدوال
 const input = document.getElementById("letterInput");
 const button = document.getElementById("submitLetter");
+const reset=document.getElementById("the_reset");
 
 button.addEventListener("click", function () {
-  const letter = input.value.toLowerCase().trim();  // تأكد من إزالة الفراغات
-
+  const letter = input.value.toLowerCase().trim();  
   if (/^[a-z]$/.test(letter)) {
-    guess(letter); // ✅ الحرف يدخل إلى الدالة هنا
+    guess(letter); 
   } else {
     alert("Please enter a valid single letter.");
   }
@@ -276,8 +281,110 @@ button.addEventListener("click", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const resetBtn = document.getElementById("the_reset");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", resetGame);
+  }
+});
+
 
 
 
 console.log(44);
 console.log(chosenWord);
+
+function update_Correct_Letter() {
+  const display = document.getElementById("correctLetters");
+  let html = "<h2>Correct Letters</h2><p>";
+
+  for (let i = 0; i < chosenWord.length; i++) {
+    const letter = chosenWord[i].toLowerCase();
+    if (correctLetters.includes(letter)) {
+      html += `${letter} `;
+    } else if (letter === " ") {
+      html += "  "; 
+    } else {
+      html += "_ ";
+    }
+  }
+
+  html += "</p>";
+  display.innerHTML = html;
+}
+
+
+
+function updateWrongLetters() {
+  const display = document.getElementById("wrongLetters");
+  display.innerHTML = `
+    <h2>Wrong Letters</h2>
+    <p>${wrongLetters.join(", ")}</p>
+  `;
+}
+
+
+
+
+function resetGame() {
+  correctLetters = [];
+  wrongLetters = [];
+  chosenWord = getRandomWord_easy().the_word.toLowerCase(); 
+
+  update_Correct_Letter();
+  updateWrongLetters();
+  update_Hang_Picture();
+  update_damage_picture();
+
+  
+  for (let i = 1; i <= 7; i++) {
+    const img = document.getElementById(`img${i}`);
+    if (img) img.style.display = "none";
+  }
+
+  for (let i = 1; i <= 7; i++) {
+    const dam = document.getElementById(`dam${i}`);
+    if (dam) dam.style.display = "none";
+  }
+
+  const img0 = document.getElementById("img0");
+  const dam0 = document.getElementById("dam0");
+  if (img0) img0.style.display = "block";
+  if (dam0) dam0.style.display = "block";
+}
+
+
+
+function checkWin() {
+  let won = true;
+
+  for (let i = 0; i < chosenWord.length; i++) {
+    const letter = chosenWord[i].toLowerCase();
+    if (letter !== " " && !correctLetters.includes(letter)) {
+      won = false;
+      break;
+    }
+  }
+
+  if (won) {
+    setTimeout(() => {
+      alert("🎉 Congratulations! You won!");
+      resetGame();
+    }, 100);
+  }
+}
+
+
+
+function updateWordDisplay(word, guessedLetters) {
+  let display = '';
+  for (let letter of word) {
+    if (guessedLetters.includes(letter.toLowerCase())) {
+      display += letter + ' ';
+    } else {
+      display += '_ ';
+    }
+  }
+  return display.trim();
+}
+
