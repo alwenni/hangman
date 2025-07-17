@@ -2,7 +2,7 @@
 
 Welcome to **Hangman**!  
 Challenge yourself and see how many words you can guess before the character’s fate is sealed.
-![logo](https://ibb.co/6RP9H3ts)
+![logo]('https://ibb.co/6RP9H3ts')
 
 - **Play Now:** 
 - **Planning Materials:**
