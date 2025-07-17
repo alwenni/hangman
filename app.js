@@ -73,46 +73,46 @@ inputa.addEventListener("keydown", function (event) {
       alert("Please enter a valid single letter.");
     }
     inputa.value = "";
-    inputa.focus();    
+    inputa.focus();
   }
 });
 
 
 
 
-let  temp, the_word;
+let temp, the_word;
 
-let chosenWord = getRandomWord_easy().the_word;      
-let correctLetters = [];    
-let wrongLetters = [];   
-let maxErrors = 7;     
+let chosenWord = getRandomWord_easy().the_word;
+let correctLetters = [];
+let wrongLetters = [];
+let maxErrors = 7;
 
 function getRandomWord_hard() {
-    return{
-       the_word: hardWords[Math.floor(Math.random() * hardWords.length)],
-    }
+  return {
+    the_word: hardWords[Math.floor(Math.random() * hardWords.length)],
+  }
 
 }
 
 
 
 function getRandomWord_easy() {
-    return{
-       the_word: easyWords[Math.floor(Math.random() * easyWords.length)],
-    }
+  return {
+    the_word: easyWords[Math.floor(Math.random() * easyWords.length)],
+  }
 
 }
 
 function getRandomWord_medium() {
-    return{
-       the_word: mediumWords[Math.floor(Math.random() * mediumWords.length)],
-    }
+  return {
+    the_word: mediumWords[Math.floor(Math.random() * mediumWords.length)],
+  }
 
 }
 function getRandomWord_insane() {
-    return{
-       the_word: InsaneWords[Math.floor(Math.random() * InsaneWords.length)],
-    }
+  return {
+    the_word: InsaneWords[Math.floor(Math.random() * InsaneWords.length)],
+  }
 
 }
 
@@ -138,24 +138,24 @@ function handleKeyboard(event) {
 
 
 function guess(letter) {
-console.log("Guessed letter:", letter);
-console.log("Wrong letters:", wrongLetters);
+  console.log("Guessed letter:", letter);
+  console.log("Wrong letters:", wrongLetters);
   if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
-    return; 
+    return;
   }
 
   if (chosenWord.toLowerCase().includes(letter)) {
     correctLetters.push(letter);
     update_Correct_Letter(letter);
-    checkWin();          
+    checkWin();
   } else {
-    ouchSound.currentTime=0;
+    ouchSound.currentTime = 0;
     ouchSound.play();
     setTimeout(() => {
-  ouchSound.pause();
-  ouchSound.currentTime = 0; 
-}, 2000);
-    
+      ouchSound.pause();
+      ouchSound.currentTime = 0;
+    }, 2000);
+
     wrongLetters.push(letter);
     updateWrongLetters(letter);
     update_Hang_Picture();
@@ -168,8 +168,8 @@ console.log("Wrong letters:", wrongLetters);
 }
 
 
-function handleKeyPress(event){
-const letter = event.key.toLowerCase();
+function handleKeyPress(event) {
+  const letter = event.key.toLowerCase();
   if (letter.length === 1 && letter.match(/[a-z]/i)) {
     guess(letter);
   }
@@ -178,22 +178,22 @@ const letter = event.key.toLowerCase();
 
 
 
-function resetGame(){
-correctLetters=[];
-wrongLetters=[];
-chosenWord=getRandomWord_easy().the_word;
-update_Correct_Letter();
-updateWrongLetters();
-update_Hang_Picture();
-update_damage_picture();
-document.addEventListener("keydown", handleKeyPress);
-re
+function resetGame() {
+  correctLetters = [];
+  wrongLetters = [];
+  chosenWord = getRandomWord_easy().the_word;
+  update_Correct_Letter();
+  updateWrongLetters();
+  update_Hang_Picture();
+  update_damage_picture();
+  document.addEventListener("keydown", handleKeyPress);
+  re
 
 
 }
 
-function update_Hang_Picture(){
-for (let i = 0; i <= 7; i++) {
+function update_Hang_Picture() {
+  for (let i = 0; i <= 7; i++) {
     const img = document.getElementById(`img${i}`);
     if (img) img.style.display = "none";
   }
@@ -201,11 +201,11 @@ for (let i = 0; i <= 7; i++) {
 
   const image = document.getElementById("hangmanImage");
 
-  if(wrongLetters.length===0){
-    document.getElementById("img0").style.display="block";
+  if (wrongLetters.length === 0) {
+    document.getElementById("img0").style.display = "block";
   }
 
-else if (wrongLetters.length === 1) {
+  else if (wrongLetters.length === 1) {
     document.getElementById("img1").style.display = "block";
   }
   else if (wrongLetters.length === 2) {
@@ -231,8 +231,8 @@ else if (wrongLetters.length === 1) {
 
 
 
-function update_damage_picture(){
-    for (let i = 0; i <= 7; i++) {
+function update_damage_picture() {
+  for (let i = 0; i <= 7; i++) {
     const img = document.getElementById(`dam${i}`);
     if (img) img.style.display = "none";
   }
@@ -292,12 +292,12 @@ function updateWrongLetters() {
 
 const input = document.getElementById("letterInput");
 const button = document.getElementById("submitLetter");
-const reset=document.getElementById("the_reset");
+const reset = document.getElementById("the_reset");
 
 button.addEventListener("click", function () {
-  const letter = input.value.toLowerCase().trim();  
+  const letter = input.value.toLowerCase().trim();
   if (/^[a-z]$/.test(letter)) {
-    guess(letter); 
+    guess(letter);
   } else {
     alert("Please enter a valid single letter.");
   }
@@ -329,7 +329,7 @@ function update_Correct_Letter() {
     if (correctLetters.includes(letter)) {
       html += `${letter} `;
     } else if (letter === " ") {
-      html += "  "; 
+      html += "  ";
     } else {
       html += "_ ";
     }
@@ -355,7 +355,7 @@ function updateWrongLetters() {
 function resetGame() {
   correctLetters = [];
   wrongLetters = [];
-  chosenWord = getRandomWord_easy().the_word.toLowerCase(); 
+  chosenWord = getRandomWord_easy().the_word.toLowerCase();
   console.log(chosenWord);
 
   document.getElementById("letterInput").value = "";
@@ -364,9 +364,9 @@ function resetGame() {
   updateWrongLetters();
   update_Hang_Picture();
   update_damage_picture();
-  
 
-  
+
+
   for (let i = 1; i <= 7; i++) {
     const img = document.getElementById(`img${i}`);
     if (img) img.style.display = "none";
@@ -385,12 +385,12 @@ function resetGame() {
 
 
 const menuBtn = document.getElementById("the_menu");
-  if (menuBtn) {
-    menuBtn.addEventListener("click", () => {
-      console.log("Menu clicked"); 
-      window.location.href = "index1.html";
-    });
-  }
+if (menuBtn) {
+  menuBtn.addEventListener("click", () => {
+    console.log("Menu clicked");
+    window.location.href = "index1.html";
+  });
+}
 
 
 
@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resetBtn.addEventListener("click", resetGame);
   }
 
-  update_Correct_Letter(); 
+  update_Correct_Letter();
 });
 
 
@@ -443,5 +443,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
-  
+
+
